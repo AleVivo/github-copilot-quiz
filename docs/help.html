@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manuale Utente - GitHub Copilot Quiz</title>
+  <link rel="stylesheet" href="../src/styles/style.css">
+  <style>
+    .help-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem;
+      line-height: 1.6;
+    }
+    
+    .help-nav {
+      background: #f8f9fa;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+      border-left: 4px solid #007bff;
+    }
+    
+    .help-nav ul {
+      margin: 0;
+      padding-left: 1.5rem;
+    }
+    
+    .help-nav a {
+      color: #007bff;
+      text-decoration: none;
+    }
+    
+    .help-nav a:hover {
+      text-decoration: underline;
+    }
+    
+    .help-section {
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .help-section:last-child {
+      border-bottom: none;
+    }
+    
+    .help-section h2 {
+      color: #333;
+      border-bottom: 2px solid #007bff;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .help-section h3 {
+      color: #555;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+    
+    .step-list {
+      background: #f8f9fa;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+    
+    .step-list ol {
+      margin: 0;
+      padding-left: 1.5rem;
+    }
+    
+    .step-list li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    
+    .feature-card {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .feature-card h4 {
+      color: #007bff;
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+    
+    .code-example {
+      background: #f8f8f8;
+      border: 1px solid #e1e4e8;
+      border-radius: 6px;
+      padding: 0;
+      margin: 1rem 0;
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .code-header {
+      background: #f1f3f4;
+      border-bottom: 1px solid #e1e4e8;
+      padding: 0.5rem 1rem;
+      font-size: 0.875rem;
+      color: #586069;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .code-content {
+      padding: 1rem;
+      overflow-x: auto;
+      font-size: 0.875rem;
+      line-height: 1.45;
+      white-space: pre;
+    }
+    
+    .copy-btn {
+      background: #f3f4f6;
+      border: 1px solid #d1d5db;
+      border-radius: 4px;
+      padding: 0.25rem 0.5rem;
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .copy-btn:hover {
+      background: #e5e7eb;
+      border-color: #9ca3af;
+    }
+    
+    .copy-btn:active {
+      background: #d1d5db;
+    }
+    
+    .copy-btn.copied {
+      background: #10b981;
+      color: white;
+      border-color: #10b981;
+    }
+    
+    .tip-box {
+      background: #e7f3ff;
+      border-left: 4px solid #007bff;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 0 4px 4px 0;
+    }
+    
+    .warning-box {
+      background: #fff3cd;
+      border-left: 4px solid #ffc107;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 0 4px 4px 0;
+    }
+    
+    .back-link {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 0.5rem 1rem;
+      background: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
+    
+    .back-link:hover {
+      background: #0056b3;
+      color: white;
+    }
+    
+    @media (max-width: 768px) {
+      .help-container {
+        padding: 1rem;
+      }
+      
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="help-container">
+    <h1>📖 Manuale Utente - GitHub Copilot Quiz</h1>
+    
+    <div class="help-nav">
+      <h3>🧭 Navigazione Rapida</h3>
+      <ul>
+        <li><a href="#panoramica">Panoramica</a></li>
+        <li><a href="#quiz-predefiniti">Quiz Predefiniti</a></li>
+        <li><a href="#quiz-personalizzati">Quiz Personalizzati</a></li>
+        <li><a href="#esecuzione-quiz">Esecuzione Quiz</a></li>
+        <li><a href="#caratteristiche">Caratteristiche Speciali</a></li>
+        <li><a href="#suggerimenti">Suggerimenti</a></li>
+        <li><a href="#risoluzione-problemi">Risoluzione Problemi</a></li>
+        <li><a href="#riferimento-rapido">Riferimento Rapido</a></li>
+      </ul>
+    </div>
+
+    <section id="panoramica" class="help-section">
+      <h2>🎯 Panoramica</h2>
+      <p>GitHub Copilot Quiz è un'applicazione web che ti permette di testare le tue conoscenze su vari argomenti tecnici attraverso quiz interattivi.</p>
+      
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h4>📚 Quiz Predefiniti</h4>
+          <p>Collezioni curate di domande su GitHub Copilot, MongoDB e altri argomenti tecnici.</p>
+        </div>
+        <div class="feature-card">
+          <h4>✏️ Quiz Personalizzati</h4>
+          <p>Crea i tuoi quiz importando dati in formato JSON o YAML.</p>
+        </div>
+        <div class="feature-card">
+          <h4>🔗 Condivisione</h4>
+          <p>Genera link condivisibili per far eseguire quiz ad altri utenti.</p>
+        </div>
+        <div class="feature-card">
+          <h4>📱 Responsive</h4>
+          <p>Funziona perfettamente su desktop, tablet e dispositivi mobili.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="quiz-predefiniti" class="help-section">
+      <h2>📚 Quiz Predefiniti</h2>
+      <p>I quiz predefiniti sono collezioni curate di domande su argomenti specifici.</p>
+      
+      <h3>Come utilizzare i quiz predefiniti:</h3>
+      <div class="step-list">
+        <ol>
+          <li><strong>Seleziona l'argomento</strong>: Usa il menu "Filtra domande per topic"</li>
+          <li><strong>Scegli l'origine</strong>: Seleziona se includere tutte le domande o escludere quelle da Copilot & GPT</li>
+          <li><strong>Imposta il numero di domande</strong>: Scegli tra 5, 10, 15, 20, 25 o 30 domande</li>
+          <li><strong>Genera il quiz</strong>: Clicca su "Genera Quiz"</li>
+        </ol>
+      </div>
+
+      <h3>Argomenti disponibili:</h3>
+      <ul>
+        <li><strong>GitHub Copilot</strong>: 100+ domande su certificazione, prompt engineering, Responsible AI, e best practices</li>
+        <li><strong>MongoDB Java Developer Associate</strong>: 30+ domande su sviluppo MongoDB, aggregation pipelines, indexing e Java driver</li>
+      </ul>
+    </section>
+
+    <section id="quiz-personalizzati" class="help-section">
+      <h2>✏️ Quiz Personalizzati</h2>
+      <p>Puoi creare quiz personalizzati importando i tuoi dati in formato JSON o YAML.</p>
+      
+      <h3>Passi per creare un quiz personalizzato:</h3>
+      <div class="step-list">
+        <ol>
+          <li><strong>Vai alla tab "Quiz Personalizzato"</strong></li>
+          <li><strong>Inserisci i dati</strong>: Incolla il tuo JSON/YAML nell'area di testo</li>
+          <li><strong>Configura le opzioni</strong>:
+            <ul>
+              <li>Scegli se svuotare il campo dopo la generazione</li>
+              <li>Seleziona il numero di domande</li>
+            </ul>
+          </li>
+          <li><strong>Genera il quiz</strong>: Clicca su "Genera Quiz"</li>
+          <li><strong>Condividi (opzionale)</strong>: Copia il link generato per condividere il quiz</li>
+        </ol>
+      </div>
+
+      <h3>Formato dati richiesto:</h3>
+      
+      <h4>Esempio JSON - Domanda Semplice:</h4>
+      <div class="code-example">
+        <div class="code-header">
+          <span>JSON</span>
+          <button class="copy-btn" onclick="copyCode(this, 'json-simple')">Copia</button>
+        </div>
+        <div class="code-content" id="json-simple">[
+  {
+    "domanda": "What is GitHub Copilot?",
+    "risposte": {
+      "a": "A version control system",
+      "b": "An AI pair programmer",
+      "c": "A hosting service",
+      "d": "A code editor"
+    },
+    "rispostaCorretta": "b",
+    "origin": "copilot"
+  }
+]</div>
+      </div>
+
+      <h4>Esempio JSON - Domanda Multipla:</h4>
+      <div class="code-example">
+        <div class="code-header">
+          <span>JSON</span>
+          <button class="copy-btn" onclick="copyCode(this, 'json-multiple')">Copia</button>
+        </div>
+        <div class="code-content" id="json-multiple">[
+  {
+    "domanda": "Which two are valid MongoDB BSON types?",
+    "risposte": {
+      "a": "32-bit integer",
+      "b": "Float",
+      "c": "ObjectId",
+      "d": "BIGINT"
+    },
+    "rispostaCorretta": ["a", "c"],
+    "origin": "mongodbUniversity"
+  }
+]</div>
+      </div>
+
+      <h4>Esempio YAML - Con Codice:</h4>
+      <div class="code-example">
+        <div class="code-header">
+          <span>YAML</span>
+          <button class="copy-btn" onclick="copyCode(this, 'yaml-code')">Copia</button>
+        </div>
+        <div class="code-content" id="yaml-code">- domanda: "What does this MongoDB query return?"
+  codeBlock: |
+    db.users.find({
+      age: { $gte: 18, $lt: 65 },
+      status: "active"
+    }).sort({ name: 1 })
+  risposte:
+    a: "All users sorted by name"
+    b: "Active users aged 18-64, sorted by name"
+    c: "Users with age field only"
+    d: "All active users"
+  rispostaCorretta: "b"
+  origin: "mongodbUniversity"</div>
+      </div>
+    </section>
+
+    <section id="esecuzione-quiz" class="help-section">
+      <h2>🎮 Esecuzione del Quiz</h2>
+      <p>Una volta generato il quiz, segui questi passi:</p>
+      
+      <div class="step-list">
+        <ol>
+          <li><strong>Leggi attentamente ogni domanda</strong></li>
+          <li><strong>Seleziona la risposta</strong>: Clicca sul radio button della risposta che ritieni corretta</li>
+          <li><strong>Naviga tra le domande</strong>: Scorri verso il basso per vedere tutte le domande</li>
+          <li><strong>Invia le risposte</strong>: Clicca su "Conferma" quando hai completato</li>
+          <li><strong>Visualizza i risultati</strong>: Vedrai il punteggio e le risposte corrette evidenziate</li>
+        </ol>
+      </div>
+
+      <div class="tip-box">
+        <strong>💡 Suggerimento:</strong> Puoi modificare le tue risposte prima di cliccare "Conferma". Una volta inviato, vedrai immediatamente i risultati.
+      </div>
+    </section>
+
+    <section id="caratteristiche" class="help-section">
+      <h2>⭐ Caratteristiche Speciali</h2>
+      
+      <h3>Domande con Codice</h3>
+      <p>Alcune domande includono esempi di codice formattati per una migliore leggibilità:</p>
+      <div class="code-example">
+        <div class="code-header">
+          <span>Esempio MongoDB Query</span>
+          <button class="copy-btn" onclick="copyCode(this, 'example-code')">Copia</button>
+        </div>
+        <div class="code-content" id="example-code">db.products.aggregate([
+  {
+    $match: {
+      price: { $gte: 100, $lte: 500 },
+      category: "electronics"
+    }
+  },
+  {
+    $group: {
+      _id: "$brand",
+      avgPrice: { $avg: "$price" },
+      count: { $sum: 1 }
+    }
+  },
+  {
+    $sort: { avgPrice: -1 }
+  }
+])</div>
+      </div>
+
+      <h3>Domande a Risposta Multipla</h3>
+      <p>Alcune domande possono avere più risposte corrette. Queste sono chiaramente indicate:</p>
+      <ul>
+        <li>Nel testo della domanda con la dicitura "Seleziona due risposte" o simile</li>
+        <li>Con un avviso visivo sotto la domanda</li>
+        <li>Utilizzano checkbox invece di radio button</li>
+        <li>Supportano feedback parziale per risposte incomplete</li>
+      </ul>
+
+      <h3>Sistema di Punteggio Avanzato</h3>
+      <p>L'applicazione fornisce feedback visivo dettagliato:</p>
+      <ul>
+        <li><strong>Risposte Corrette</strong>: Sfondo verde per risposte completamente corrette</li>
+        <li><strong>Risposte Non Date ma Corrette</strong>: Bordo grigio tratteggiato per risposte corrette non selezionate</li>
+        <li><strong>Risposte Incorrette</strong>: Sfondo rosso con testo barrato per risposte sbagliate</li>
+      </ul>
+
+      <h3>Condivisione Quiz</h3>
+      <p>Quando crei un quiz personalizzato, puoi:</p>
+      <ul>
+        <li><strong>Link Automatico</strong>: Il sistema genera automaticamente un link compresso</li>
+        <li><strong>Copia Facile</strong>: Usa il pulsante "Copia" per copiare negli appunti</li>
+        <li><strong>Accesso Diretto</strong>: Il quiz sarà accessibile direttamente tramite URL</li>
+        <li><strong>Ordine Preservato</strong>: I quiz condivisi mantengono l'ordine originale</li>
+        <li><strong>Compressione Ottimizzata</strong>: Link ottimizzati per la condivisione</li>
+      </ul>
+    </section>
+
+    <section id="suggerimenti" class="help-section">
+      <h2>💡 Suggerimenti per l'Uso</h2>
+      
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h4>👨‍🎓 Per Studenti</h4>
+          <ul>
+            <li>Ripeti i quiz per migliorare</li>
+            <li>Studia gli errori dopo ogni quiz</li>
+            <li>Usa i filtri per concentrarti su argomenti specifici</li>
+          </ul>
+        </div>
+        <div class="feature-card">
+          <h4>👨‍🏫 Per Educatori</h4>
+          <ul>
+            <li>Crea quiz personalizzati per argomenti specifici</li>
+            <li>Usa i link per distribuire quiz agli studenti</li>
+            <li>Incoraggia la ripetizione per il miglioramento</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="risoluzione-problemi" class="help-section">
+      <h2>🔧 Risoluzione Problemi</h2>
+      
+      <h3>Il quiz non si carica</h3>
+      <div class="warning-box">
+        <ul>
+          <li>Verifica la connessione internet</li>
+          <li>Ricarica la pagina (F5 o Ctrl+R)</li>
+          <li>Controlla che JavaScript sia abilitato nel browser</li>
+        </ul>
+      </div>
+
+      <h3>Errori nei quiz personalizzati</h3>
+      <div class="warning-box">
+        <ul>
+          <li>Verifica che il formato JSON/YAML sia corretto</li>
+          <li>Controlla che tutti i campi obbligatori siano presenti</li>
+          <li>Usa un validatore online per verificare la sintassi</li>
+        </ul>
+      </div>
+
+      <h3>Link di condivisione non funziona</h3>
+      <div class="warning-box">
+        <ul>
+          <li>Verifica che l'URL sia completo</li>
+          <li>Controlla che non ci siano caratteri speciali danneggiati</li>
+          <li>Rigenera il link se necessario</li>
+        </ul>
+      </div>
+
+      <div class="tip-box">
+        <strong>🆘 Serve aiuto?</strong> Se i problemi persistono, puoi aprire una issue su GitHub o contattare il team di sviluppo.
+      </div>
+    </section>
+
+    <section id="riferimento-rapido" class="help-section">
+      <h2>📋 Riferimento Rapido</h2>
+      
+      <h3>Campi obbligatori per quiz personalizzati:</h3>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h4>📝 domanda</h4>
+          <p>Il testo della domanda (string)</p>
+        </div>
+        <div class="feature-card">
+          <h4>🔤 risposte</h4>
+          <p>Oggetto con opzioni a, b, c, d (object)</p>
+        </div>
+        <div class="feature-card">
+          <h4>✅ rispostaCorretta</h4>
+          <p>Risposta corretta: "a" o ["a", "c"] (string/array)</p>
+        </div>
+        <div class="feature-card">
+          <h4>🏷️ origin</h4>
+          <p>Fonte della domanda (string)</p>
+        </div>
+      </div>
+
+      <h3>Campi opzionali:</h3>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h4>💻 codeBlock</h4>
+          <p>Codice formattato da mostrare</p>
+        </div>
+      </div>
+
+      <h3>Template base per iniziare:</h3>
+      <div class="code-example">
+        <div class="code-header">
+          <span>Template JSON</span>
+          <button class="copy-btn" onclick="copyCode(this, 'template-json')">Copia Template</button>
+        </div>
+        <div class="code-content" id="template-json">[
+  {
+    "domanda": "La tua domanda qui",
+    "risposte": {
+      "a": "Prima opzione",
+      "b": "Seconda opzione", 
+      "c": "Terza opzione",
+      "d": "Quarta opzione"
+    },
+    "rispostaCorretta": "a",
+    "origin": "custom"
+  },
+  {
+    "domanda": "Domanda con più risposte corrette",
+    "risposte": {
+      "a": "Opzione corretta 1",
+      "b": "Opzione sbagliata",
+      "c": "Opzione corretta 2", 
+      "d": "Altra opzione sbagliata"
+    },
+    "rispostaCorretta": ["a", "c"],
+    "origin": "custom"
+  }
+]</div>
+      </div>
+    </section>
+
+    <a href="../index.html" class="back-link">← Torna al Quiz</a>
+  </div>
+
+  <script>
+    function copyCode(button, elementId) {
+      const codeElement = document.getElementById(elementId);
+      const text = codeElement.textContent;
+      
+      // Use the modern Clipboard API if available
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(() => {
+          showCopySuccess(button);
+        }).catch(err => {
+          console.error('Failed to copy: ', err);
+          fallbackCopyTextToClipboard(text, button);
+        });
+      } else {
+        // Fallback for older browsers
+        fallbackCopyTextToClipboard(text, button);
+      }
+    }
+    
+    function fallbackCopyTextToClipboard(text, button) {
+      const textArea = document.createElement("textarea");
+      textArea.value = text;
+      
+      // Avoid scrolling to bottom
+      textArea.style.top = "0";
+      textArea.style.left = "0";
+      textArea.style.position = "fixed";
+      textArea.style.opacity = "0";
+      
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      
+      try {
+        const successful = document.execCommand('copy');
+        if (successful) {
+          showCopySuccess(button);
+        } else {
+          console.error('Fallback: Copying text command was unsuccessful');
+        }
+      } catch (err) {
+        console.error('Fallback: Oops, unable to copy', err);
+      }
+      
+      document.body.removeChild(textArea);
+    }
+    
+    function showCopySuccess(button) {
+      const originalText = button.textContent;
+      button.textContent = 'Copiato!';
+      button.classList.add('copied');
+      
+      setTimeout(() => {
+        button.textContent = originalText;
+        button.classList.remove('copied');
+      }, 2000);
+    }
+    
+    // Add keyboard shortcut for copying code blocks
+    document.addEventListener('keydown', function(e) {
+      if (e.ctrlKey && e.key === 'c' && e.target.closest('.code-content')) {
+        e.preventDefault();
+        const codeElement = e.target.closest('.code-example').querySelector('.code-content');
+        const button = e.target.closest('.code-example').querySelector('.copy-btn');
+        copyCode(button, codeElement.id);
+      }
+    });
+  </script>
+</body>
+</html>

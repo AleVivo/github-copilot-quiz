@@ -1,0 +1,7 @@
+# Kiro IDE files and directories
+.kiro/
+*.kiro
+
+# IDE and editor files
+.vscode/
+.idea/

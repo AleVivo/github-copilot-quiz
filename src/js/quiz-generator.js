@@ -74,26 +74,49 @@ export function generateQuiz(questions, form, resultsDiv, submitBtn, shouldRando
         isCorrect = selectedAnswers.length === 1 && selectedAnswers[0] === question.rispostaCorretta;
       }
 
+      const correctAnswers = Array.isArray(question.rispostaCorretta) ? 
+                           question.rispostaCorretta : 
+                           [question.rispostaCorretta];
+
       if (isCorrect) {
+        // Domanda completamente corretta - mark selected answers as green
         selectedAnswers.forEach(answer => {
           const input = document.querySelector(`input[name=q${index}][value="${answer}"]`);
           if (input) input.parentElement.classList.add("correct");
         });
+        
         score++;
-      } else {
-        // Marca le risposte selezionate come incorrette
-        selectedAnswers.forEach(answer => {
-          const input = document.querySelector(`input[name=q${index}][value="${answer}"]`);
-          if (input) input.parentElement.classList.add("incorrect");
-        });
-
-        // Evidenzia le risposte corrette
-        const correctAnswers = Array.isArray(question.rispostaCorretta) ? 
-                             question.rispostaCorretta : 
-                             [question.rispostaCorretta];
+      } else if (selectedAnswers.length === 0) {
+        // Domanda non risposta - show correct answers with dotted grey border
         correctAnswers.forEach(answer => {
           const input = document.querySelector(`input[name=q${index}][value="${answer}"]`);
-          if (input) input.parentElement.classList.add("correct");
+          if (input) {
+            input.parentElement.classList.add("unanswered-correct");
+          }
+        });
+        
+      } else {
+        // Domanda risposta ma non completamente corretta
+        selectedAnswers.forEach(answer => {
+          const input = document.querySelector(`input[name=q${index}][value="${answer}"]`);
+          if (input) {
+            if (correctAnswers.includes(answer)) {
+              // Selected and correct - mark as green (even if partial)
+              input.parentElement.classList.add("correct");
+            } else {
+              // Selected but wrong - mark as red
+              input.parentElement.classList.add("incorrect");
+            }
+          }
+        });
+
+        // Show unselected correct answers
+        correctAnswers.forEach(answer => {
+          const input = document.querySelector(`input[name=q${index}][value="${answer}"]`);
+          if (input && !selectedAnswers.includes(answer)) {
+            // Unselected correct answers always get grey dotted border
+            input.parentElement.classList.add("unanswered-correct");
+          }
         });
       }
 

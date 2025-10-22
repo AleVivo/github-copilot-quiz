@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GitHub Copilot Quiz</title>
   <link rel="stylesheet" href="src/styles/style.css" />
 </head>
+
 <body>
   <div class="container">
-    <h1>GitHub Copilot Quiz</h1>
-    
+    <div class="header">
+      <h1>GitHub Copilot Quiz</h1>
+      <a href="docs/help.html" class="help-link">📖 Manuale Utente</a>
+    </div>
+
     <div class="tabs">
       <button class="tab-btn active" data-tab="predefined">Quiz Predefiniti</button>
       <button class="tab-btn" data-tab="custom">Quiz Personalizzato</button>
@@ -68,7 +73,8 @@
         <label>Link al quiz:</label>
         <div class="link-wrapper">
           <input type="text" id="quizLink" readonly>
-          <button type="button" class="copyBtn" onclick="navigator.clipboard.writeText(document.getElementById('quizLink').value)">Copia</button>
+          <button type="button" class="copyBtn"
+            onclick="navigator.clipboard.writeText(document.getElementById('quizLink').value)">Copia</button>
         </div>
         <p class="link-help">Condividi questo link per far eseguire il quiz ad altri</p>
       </div>
@@ -90,4 +96,5 @@
   <script src="https://cdn.jsdelivr.net/npm/pako@2.1.0/dist/pako.min.js"></script>
   <script type="module" src="src/js/main.js"></script>
 </body>
+
 </html>

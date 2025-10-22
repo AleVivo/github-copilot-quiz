@@ -14,9 +14,51 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
-  text-align: center;
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+h1 {
+  margin: 0;
+  flex: 1;
+  text-align: center;
+}
+
+.help-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 8px 16px;
+  background-color: #f8f9fa;
+  color: #495057;
+  text-decoration: none;
+  border-radius: 6px;
+  border: 1px solid #dee2e6;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.help-link:hover {
+  background-color: #e9ecef;
+  color: #212529;
+  text-decoration: none;
+}
+
+@media (max-width: 600px) {
+  .header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  h1 {
+    text-align: center;
+  }
 }
 
 .question {
@@ -60,6 +102,17 @@ h1 {
   border-color: #e57373 !important;
 }
 
+.partially-correct {
+  color: rgb(173, 145, 0);
+  background-color: #fff9eb !important;
+  border-color: #e5d473 !important;
+}
+
+.unanswered-correct {
+  border: 2px dashed #9e9e9e !important;
+  background-color: #ececec;
+}
+
 /* Tabs styling */
 .tabs {
   display: flex;
@@ -99,7 +152,8 @@ h1 {
   display: block;
 }
 
-button.genBtn, #submitBtn {
+button.genBtn,
+#submitBtn {
   padding: 10px 20px;
   background-color: #2196F3;
   color: white;
@@ -111,11 +165,13 @@ button.genBtn, #submitBtn {
   transition: background-color 0.3s;
 }
 
-button.genBtn:hover, #submitBtn:hover {
+button.genBtn:hover,
+#submitBtn:hover {
   background-color: #1976D2;
 }
 
-select, textarea {
+select,
+textarea {
   padding: 8px;
   border: 1px solid #ddd;
   border-radius: 4px;
